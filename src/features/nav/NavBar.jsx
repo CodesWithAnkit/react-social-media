@@ -1,11 +1,14 @@
 import React from 'react'
 import { Menu, Container, Button } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
+import SignedOutMenu from './SignedOutMenu'
+import SignedInMenu from './SignedInMenu'
 
 const NavBar = ({ setFormOpen }) => {
   return (
     <Menu inverted fixed="top">
       <Container>
-        <Menu.Item header>
+        <Menu.Item as={NavLink} to="/" exact header>
           <img
             src="/assets/logo.png"
             alt="logo"
@@ -13,24 +16,12 @@ const NavBar = ({ setFormOpen }) => {
           />
           Re-vents
         </Menu.Item>
-        <Menu.Item name="Events" />
-        <Menu.Item>
-          <Button
-            onClick={() => setFormOpen(true)}
-            positive
-            inverted
-            content="Create Event"
-          />
+        <Menu.Item as={NavLink} exact to="/events" name="Events" />
+        <Menu.Item as={NavLink} to="/createEvent">
+          <Button positive inverted content="Create Event" />
         </Menu.Item>
-        <Menu.Item position="right">
-          <Button basic inverted content="login" />
-          <Button
-            basic
-            inverted
-            content="Registed"
-            style={{ marginLeft: '0.5em' }}
-          />
-        </Menu.Item>
+        <SignedOutMenu />
+        <SignedInMenu />
       </Container>
     </Menu>
   )
