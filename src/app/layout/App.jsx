@@ -6,6 +6,7 @@ import HomePage from '../../features/home/HomePage'
 import EventDetailedPage from '../../features/events/eventDetails/EventDetailedPage'
 import EventForm from '../../features/events/eventForm/EventForm'
 import { Route } from 'react-router-dom'
+import Sandbox from '../../features/sandbox/Sandbox'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <NavBar />
             <Container className="main">
               <Route path="/events" exact component={EventDashboard} />
+              <Route path="/sandbox" exact component={Sandbox} />
               <Route path="/events/:id" component={EventDetailedPage} />
               <Route
                 path={['/createEvent', '/manage/:id']}
